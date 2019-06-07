@@ -4,5 +4,6 @@ matrix:
       osx_image: xcode9.3
 script:
   - cd URITemplate && swift package generate-xcodeproj && cd ..
-  - xcodebuild -project Mockingjay.xcodeproj -scheme Mockingjay test -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
+  - xcodebuild -project Mockingjay.xcodeproj -scheme URITemplate-Package build
+  - xcodebuild -project Mockingjay.xcodeproj -scheme Mockingjay -destination "platform=iOS Simulator,name=iPhone X" test -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO
   - pod lib lint --quick
